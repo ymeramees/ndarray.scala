@@ -106,7 +106,7 @@ object FillValue {
          * always the same size), e.g. numeric types.
          */
         def apply(json: Json, unused: DataType[T]): Result[T] =
-          if (json.isNull)
+          if (json.isNull || json.toString == "\"NaN\"")
             Right(Null)
           else
             d
